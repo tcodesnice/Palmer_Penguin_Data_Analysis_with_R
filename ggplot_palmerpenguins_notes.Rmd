@@ -1,0 +1,74 @@
+---
+title: "Penguin Data Visualization"
+author: "Tom"
+date: "2023-10-04"
+output: html_document
+---
+
+# Introduction
+
+In this document, we will explore the Palmer Penguins dataset using various data visualization techniques in R. We will use the `ggplot2` package to create plots and examine the relationship between flipper length and body mass among penguins, while considering different aspects of the data such as species and sex.
+
+# Loading the Data
+
+```{r loading packages, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+# Load the penguins dataset
+```{r}
+data(penguins)
+```
+# Display a glimpse of the dataset
+```{r}
+glimpse(penguins)
+```
+
+# Scatter Plots
+#### Scatter Plot: Flipper Length vs. Body Mass
+
+We can create a basic scatter plot to visualize the relationship between flipper length and body mass among penguins:
+
+``` {r}
+# Scatter plot of flipper length vs. body mass
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(color = "purple")
+```
+
+#### Scatter Plot with Species Differentiation
+
+Now, let's add color differentiation for different penguin species:
+
+``` {r}
+# Scatter plot with color-coded points for species
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species))
+``` 
+
+#### Scatter Plot with Species and Shape Differentiation
+
+To further enhance the plot, we can use both color and shape to differentiate the points by species:
+
+``` {r}
+# Scatter plot with color-coded and shape-coded points for species
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = species))
+```
+
+#### Faceted Scatter Plots by Sex
+
+Now, let's create faceted scatter plots by sex, considering the flipper length and body mass:
+
+``` {r}
+# Faceted scatter plots by sex with color-coded and shape-coded points for species
+penguins %>%
+  drop_na(sex) %>%
+  ggplot(aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(aes(color=species,
+                 shape=species)) +
+  facet_wrap(~sex)
+```
+
+# Conclusion
+
+In this document, we explored the Palmer Penguins dataset using various scatter plots to visualize the relationship between flipper length and body mass among penguins. We considered differentiation by species and sex to gain insights into the data.
