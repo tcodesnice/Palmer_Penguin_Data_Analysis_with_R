@@ -9,6 +9,10 @@ output: html_document
 
 In this document, we will explore the Palmer Penguins dataset using various data visualization techniques in R. We will use the `ggplot2` package to create plots and examine the relationship between flipper length and body mass among penguins, while considering different aspects of the data such as species and sex.
 
+For more details on using R Markdown, [click here](http://rmarkdown.rstudio.com).
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
 # Loading the Data
 
 ```{r loading packages, message=FALSE, warning=FALSE}
